@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .modal {
+                position: fixed;
+                inset: 0;
+                background: #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="modal">
+            <button class="close-modal">Close</button>
+            <button class="cancel-modal">Cancel</button>
+        </div>
+        <script>
+            const modal = document.querySelector(".modal");
+            const closeBtn = document.querySelector(".close-modal");
+            const cancelBtn = document.querySelector(".cancel-modal");
+
+            closeBtn.onclick = (event) => {
+                // Logic... (clientX, clientY, ...)
+                modal.hidden = true;
+                // Logic...
+                console.log(event.clientX, event.clientY);
+            };
+
+            cancelBtn.onclick = () => {
+                // closeBtn.click();
+                closeBtn.dispatchEvent(
+                    new PointerEvent("click", {
+                        clientX: 300,
+                        clientY: 4000,
+                    })
+                );
+            };
+        </script>
+    </body>
+</html>

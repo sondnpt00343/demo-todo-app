@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tabs</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            button {
+                border: none;
+                background: transparent;
+            }
+
+            .tabs {
+                margin: 20px;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+            }
+
+            .tab-item {
+                padding: 4px 10px;
+                border-bottom: 2px solid transparent;
+            }
+
+            .tab-item.active {
+                border-color: #333;
+            }
+
+            .tabs .content {
+                display: none;
+            }
+
+            .tabs .content.active {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Tabs 1 -->
+        <div id="tab1" class="tabs">
+            <div class="tabs-list">
+                <button class="tab-item">Tab 1</button>
+                <button class="tab-item">Tab 2</button>
+                <button class="tab-item">Tab 3</button>
+            </div>
+            <div class="tabs-content">
+                <div class="content">Content 1</div>
+                <div class="content">Content 2</div>
+                <div class="content">Content 3</div>
+            </div>
+        </div>
+
+        <!-- Tabs 2 -->
+        <div id="tab2" class="tabs">
+            <div class="tabs-list">
+                <button class="tab-item">Tab 1</button>
+                <button class="tab-item">Tab 2</button>
+                <button class="tab-item">Tab 3</button>
+                <button class="tab-item">Tab 4</button>
+            </div>
+            <div class="tabs-content">
+                <div class="content">Content 1</div>
+                <div class="content">Content 2</div>
+                <div class="content">Content 3</div>
+                <div class="content">Content 4</div>
+            </div>
+        </div>
+        <script src="./js/tabs.js"></script>
+    </body>
+</html>

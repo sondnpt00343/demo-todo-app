@@ -1,151 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./styles.css">
-  <!-- Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
+            .app {
+                padding: 10px;
+            }
 
-<body>
+            .dropzone {
+                height: 80px;
+                background: #efefef;
+                border: 3px dashed #666;
+            }
 
-  <!-- Header -->
-  <header class="header">
-    <div class="header-content">
-      <div class="logo">
-        <div class="logo-icon"></div>
-        <span class="logo-text">F8 Todo</span>
-      </div>
+            .words,
+            .dropzone {
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+                flex-wrap: wrap;
+                user-select: none;
+            }
 
-      <h1 class="header-title">Todo List</h1>
+            .words span,
+            .dropzone span {
+                padding: 3px 6px;
+                border-radius: 6px;
+                background: #ccc;
+                cursor: grab;
+            }
 
-      <div class="header-actions">
-        <button class="notification-btn">
-          <i class="fa-solid fa-bell fa-icon"></i>
-        </button>
-        <div class="profile-avatar">
-          <i class="fa-solid fa-user fa-icon"></i>
+            .dropzone {
+                padding: 8px;
+            }
+
+            .words {
+                margin-top: 100px;
+            }
+
+            .words span:active {
+                cursor: grabbing;
+            }
+
+            .origin {
+                margin-top: 8px;
+                font-size: 14px;
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="app">
+            <div class="dropzone"></div>
+            <div class="origin"></div>
+            <div class="words"></div>
         </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="main-content">
-    <!-- Controls Section -->
-    <div class="controls">
-      <div class="search-container">
-        <i class="fa-solid fa-magnifying-glass fa-icon search-icon"></i>
-        <input type="text" class="search-input" placeholder="Search List">
-      </div>
-
-      <button class="add-btn">
-        <i class="fa-solid fa-plus fa-icon"></i>
-        Add New Task
-      </button>
-    </div>
-
-    <!-- Tabs -->
-    <div class="tabs">
-      <div class="tab-list">
-        <button class="tab-button active">Active Task</button>
-        <button class="tab-button completed-btn">
-          <i class="fa-solid fa-plus fa-icon"></i>
-          <span>Completed</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Task Grid -->
-    <div class="task-grid" id="todoList">
-    </div>
-  </main>
-
-  <!-- Add New Task Modal -->
-  <div class="modal-overlay" id="addTaskModal">
-    <div class="modal">
-      <div class="modal-header">
-        <h2 class="modal-title">Add New Task</h2>
-        <button class="modal-close">
-          <i class="fa-solid fa-xmark fa-icon"></i>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="todo-app-form">
-          <div class="form-group">
-            <label class="form-label" for="taskTitle">Task Title *</label>
-            <input type="text" id="taskTitle" class="form-input" name="title" placeholder="Enter task title" required>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="taskDescription">Description</label>
-            <textarea id="taskDescription" class="form-textarea" name="description" placeholder="Enter task description"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="taskCategory">Category</label>
-            <select id="taskCategory" class="form-select" name="category">
-              <option value="">Select category</option>
-              <option value="meeting">Meeting</option>
-              <option value="design">Design</option>
-              <option value="development">Development</option>
-              <option value="planning">Planning</option>
-              <option value="client">Client Work</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="taskPriority">Priority</label>
-            <select id="taskPriority" class="form-select" name="priority">
-              <option value="low">Low</option>
-              <option value="medium" selected>Medium</option>
-              <option value="high">High</option>
-              <option value="urgent">Urgent</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Time Schedule</label>
-            <div class="time-inputs">
-              <div>
-                <label class="form-label" for="startTime">Start Time</label>
-                <input type="time" id="startTime" class="form-input" name="startTime">
-              </div>
-              <div>
-                <label class="form-label" for="endTime">End Time</label>
-                <input type="time" id="endTime" class="form-input" name="endTime">
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="taskDate">Due Date</label>
-            <input type="date" id="taskDate" class="form-input" name="dueDate">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="taskColor">Card Color</label>
-            <select id="taskColor" class="form-select" name="color">
-              <option value="blue">Blue</option>
-              <option value="purple">Purple</option>
-              <option value="yellow">Yellow</option>
-              <option value="pink">Pink</option>
-              <option value="green">Green</option>
-            </select>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-cancel btn-secondary">Cancel</button>
-            <button type="submit" class="btn btn-primary btn-submit">Create Task</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <script src="./js/main.js"></script>
-</body>
-
+        <script src="./js/main.js"></script>
+    </body>
 </html>
